@@ -1,4 +1,15 @@
-name: Push a Docker Image
+name: CI Pipeline
+# This workflow will build, test, and push the Docker image to Docker Hub
+# when there is a push to the main branch or manually triggered
+# It will also run the tests and build the package
+# and upload the artifacts for the trained model and the built package
+# The workflow is divided into four jobs: train, test, build, and push-image
+# The train job will train the model and save it as a pickle file
+# The test job will run the tests using pytest
+# The build job will build the package using setuptools
+# The push-image job will build the Docker image and push it to Docker Hub
+# The workflow will run on the latest version of Ubuntu
+# The workflow will run on the latest version of Python 3.12.3
 on:
   push:
     branches:
