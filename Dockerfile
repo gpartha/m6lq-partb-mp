@@ -1,16 +1,17 @@
 # pull python base image
 FROM python:3.10-slim
 
-# copy application files
-ADD /bikeshare_model_api /bikeshare_model_api/
-
-# specify working directory
-WORKDIR /bikeshare_model_api
+# copy the model api folder to the docker image
+ADD /bike_sharing_api /bike_sharing_api
 
 # update pip
 RUN pip install --upgrade pip
 
-# install dependencies
+# Change working directory to the model api folder
+WORKDIR /bike_sharing_api
+
+# Note: Assuming that the wheel file has already been copied to this directory
+# install fastapi dependencies
 RUN pip install -r requirements.txt
 
 # expose port for application
